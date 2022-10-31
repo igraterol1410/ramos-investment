@@ -46,7 +46,8 @@ const LandingHeader = () => {
     alignItems='center' 
     py='1.5rem' 
     px='2rem'
-    bg='white'>
+    bg='white'
+    zIndex={10}>
 
       <Link to='/'>
         <Image 
