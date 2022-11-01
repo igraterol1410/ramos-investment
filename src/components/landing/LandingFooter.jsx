@@ -105,13 +105,13 @@ const LandingFooter = () => {
               marginBottom={4}>
               Contáctanos
               </Center>
-              <Flex alignItems='center' gap={2} marginBottom={2} px={4}>
+              <Flex alignItems='center' gap={2} marginBottom={2} px={4} fontSize={14}>
                 <FaPhoneAlt /> +58 212-5418688
               </Flex>
-              <Flex alignItems='center' gap={2} marginBottom={2} px={4}>
+              <Flex alignItems='center' gap={2} marginBottom={2} px={4} fontSize={14}>
                 <SiWhatsapp /> +58 412-3734835
               </Flex>
-              <Flex alignItems='center' gap={2} px={4}>
+              <Flex alignItems='center' gap={2} px={4} fontSize={14}>
                 <SiGmail /> inversionesramos2030@gmail.com
               </Flex>
             </GridItem>
@@ -119,7 +119,7 @@ const LandingFooter = () => {
               <Center fontWeight='bold' textAlign='center' marginBottom={4}>
               Ubicación
               </Center>
-              <Flex alignItems='center' gap={2} px={4}>
+              <Flex alignItems='center' gap={2} px={4} fontSize={14}>
                 <FaLocationArrow /> La Concordia - Caracas
               </Flex>
             </GridItem>
