@@ -23,7 +23,7 @@ const LandingMain = () => {
   return (
     <HStack marginTop='98px' spacing='1rem' boxSizing='border-box' height='90vh' w='100%' marginLeft='auto' marginRight='auto' position='relative'>
         {/* <Box w='50%' h='100%'> */}
-      <Image src={Waves} position='absolute' w='100%' h='100%' left='0' zIndex='-1' opacity='.4' />
+      <Image src={Waves} position='absolute' w='100%' h='100%' left='0' zIndex='-1' opacity='.4' objectFit='cover' />
         <Swiper 
         modules={[Autoplay, Pagination, Navigation]} 
         slidesPerView={1}
