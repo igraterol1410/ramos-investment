@@ -77,7 +77,7 @@ const LandingMain = () => {
         px={4}
         display='grid'
         alignContent='center'
-        gridTemplateRows='1fr 1fr 1fr'
+        gridTemplateRows='20px 1fr 50px'
         marginTop={['0','0','-4rem','-4rem']}
         >
         <Box 
@@ -88,31 +88,27 @@ const LandingMain = () => {
         </Box>
         <Box display='grid'
         alignContent='center'>
-          <Swiper 
-          style={pageWidth && pageWidth < 760 ? {width:'80vw'} : {width:'48vw'}}
-          modules={[Autoplay, Pagination, Navigation]} 
-          slidesPerView={1}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false
-          }}>
-            <SwiperSlide>
-              <Center textAlign='center' w='100%'>
+          <Center textAlign='center'>
+            <Swiper 
+            style={pageWidth && pageWidth < 760 ? {width:'80vw'} : {width:'48vw'}}
+            modules={[Autoplay, Pagination, Navigation]} 
+            autoHeight
+            slidesPerView={1}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false
+            }}>
+              <SwiperSlide>
                 <Heading w='100%' color='brand.aquamarinePrimary'>Somos distribuidores de productos de limpieza, bolsas plásticas, víveres y más...</Heading>
-              </Center>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Center textAlign='center'>
+              </SwiperSlide>
+              <SwiperSlide>
                 <Heading color='brand.blue'>Todo en artículos de limpieza</Heading>
-              </Center>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Center textAlign='center'>
+              </SwiperSlide>
+              <SwiperSlide>
                 <Heading color='brand.aquamarinePrimary'>Linea institucional de papel</Heading>
-              </Center>
-            </SwiperSlide>
-          </Swiper>
-        </Box>
+              </SwiperSlide>
+            </Swiper>
+            </Center>
           <Box 
           marginTop={4}>
             <Center>
@@ -132,6 +128,7 @@ const LandingMain = () => {
                 </Button>
               </Link>
             </Center>
+        </Box>
           </Box>
         </Box>
       </GridItem>
