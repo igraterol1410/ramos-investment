@@ -16,7 +16,7 @@ import { FaLocationArrow, FaPhoneAlt } from "react-icons/fa";
 const LandingFooter = () => {
   return (
     <Grid 
-    bg='#19a4b0' 
+    bg='brand.aquamarinePrimary' 
     color='white' 
     w='100%' 
     gridTemplateColumns='1fr' 
@@ -75,25 +75,6 @@ const LandingFooter = () => {
                   </Flex>
               </Center>
             </GridItem>
-            {/* <GridItem w='100%' borderRight='1px solid #219737' px={4} marginBottom={4}>
-              <Center marginBottom={4} fontWeight='bold' textAlign='center'>
-              Siguenos en nuestras redes sociales
-              </Center> */}
-              {/* <Center>
-                  <Flex gap={8}>
-                      <Link href='https://chakra-ui.com' isExternal w='100%' h='100%'>
-                        <Center color='white' marginTop='auto' marginBottom='auto'>
-                          <SiFacebook fontSize={40} />
-                        </Center>
-                      </Link>
-                      <Link href='https://chakra-ui.com' isExternal w='100%' h='100%'>
-                        <Center color='white' marginTop='auto' marginBottom='auto'>
-                          <SiInstagram fontSize={40} />
-                        </Center>
-                      </Link>
-                  </Flex>
-              </Center> */}
-            {/* </GridItem> */}
             <GridItem 
             w='100%' 
             borderRight={['none','none','1px solid white','1px solid white']} 
