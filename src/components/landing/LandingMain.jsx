@@ -18,6 +18,7 @@ import {
   import Hero1 from '../../assets/productos/tobo_mopeador.webp'
   import Hero2 from '../../assets/productos/hojas_oficio.webp'
   import Hero3 from '../../assets/productos/bolsa_desechos_organicos.webp'
+  import Animation from '../../assets/animation.svg'
 
 import HeroImage from '../../assets/hero-image.svg'
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -52,8 +53,9 @@ const LandingMain = () => {
     height='90vh' 
     w='100%'
     position='relative'
+    bgGradient='linear(to-t, brand.aquamarinePrimary, white)'
     >
-      <Image 
+      {/* <Image 
       src={Waves} 
       alt='olas de fondo'
       position='absolute'
@@ -63,7 +65,7 @@ const LandingMain = () => {
       h='100%'
       w='100%'
       objectFit='cover'
-      />
+      /> */}
       <GridItem 
       h='100%' 
       w='100%'
@@ -77,17 +79,17 @@ const LandingMain = () => {
         px={4}
         display='grid'
         alignContent='center'
-        gridTemplateRows='20px 1fr 50px'
+        gridTemplateRows='1fr 50px'
         marginTop={['0','0','-4rem','-4rem']}
         >
-        <Box 
-        marginTop='auto'
-        fontWeight='bold'
-        color='brand.blue'>
-          Tu mejor aliado comercial
-        </Box>
         <Box display='grid'
         alignContent='center'>
+          <Box 
+          marginTop='auto'
+          fontWeight='bold'
+          color='brand.blue'>
+            Tu mejor aliado comercial
+          </Box>
           <Center textAlign='center'>
             <Swiper 
             style={pageWidth && pageWidth < 760 ? {width:'80vw'} : {width:'48vw'}}
@@ -142,8 +144,8 @@ const LandingMain = () => {
         <Box
         w={['200px','200px','500px','500px']}
         h={['200px','200px','500px','500px']}
-        bg='brand.blue'
         borderRadius='50%'
+        backgroundImage={Animation}
         >
           <Box>
           <Swiper
