@@ -16,12 +16,14 @@ import {
   // import Waves from '../../assets/waves2.svg'
   import Waves from '../../assets/waves2.svg'
   import Hero1 from '../../assets/productos/tobo_mopeador.webp'
-  import Hero2 from '../../assets/productos/hojas_oficio.webp'
+  import Hero2 from '../../assets/hero-image.svg'
   import Hero3 from '../../assets/productos/bolsa_desechos_organicos.webp'
   import Animation from '../../assets/animation.svg'
 
 import HeroImage from '../../assets/hero-image.svg'
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import products from '../../components/products/products';
 
 // Import Swiper styles
 import "swiper/css";
@@ -55,17 +57,6 @@ const LandingMain = () => {
     position='relative'
     bgGradient='linear(to-t, brand.aquamarinePrimary, white)'
     >
-      {/* <Image 
-      src={Waves} 
-      alt='olas de fondo'
-      position='absolute'
-      top='0'
-      left='0'
-      zIndex='-1'
-      h='100%'
-      w='100%'
-      objectFit='cover'
-      /> */}
       <GridItem 
       h='100%' 
       w='100%'
@@ -101,13 +92,13 @@ const LandingMain = () => {
               disableOnInteraction: false
             }}>
               <SwiperSlide>
-                <Heading w='100%' color='brand.aquamarinePrimary'>Somos distribuidores de productos de limpieza, bolsas plásticas, víveres y más...</Heading>
+                <Heading w='100%' color='brand.blue'>Somos distribuidores de productos de limpieza, bolsas plásticas, víveres y más...</Heading>
               </SwiperSlide>
               <SwiperSlide>
                 <Heading color='brand.blue'>Todo en artículos de limpieza</Heading>
               </SwiperSlide>
               <SwiperSlide>
-                <Heading color='brand.aquamarinePrimary'>Linea institucional de papel</Heading>
+                <Heading color='brand.blue'>Linea institucional de papel</Heading>
               </SwiperSlide>
             </Swiper>
             </Center>
@@ -117,12 +108,12 @@ const LandingMain = () => {
               <Link to='/cotizar'>
                 <Button
                 borderRadius={50}
-                bg='brand.aquamarinePrimary'
+                bg='brand.blue'
                 color='white'
                 padding={8}
                 fontSize={18}
                 _hover={{
-                  color:'white',
+                  color:'brand.aquamarinePrimary',
                   bg:'brand.blue'
                 }}
                 >
@@ -155,21 +146,15 @@ const LandingMain = () => {
             delay: 3000,
             disableOnInteraction: false
           }}>
-            <SwiperSlide>
-              <Center textAlign='center' w='100%'>
-                <Image src={Hero1} objectFit='cover' w='60%' h='60%' />
-              </Center>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Center textAlign='center' marginTop='20%'>
-                <Image src={Hero2} objectFit='cover' w='60%' h='60%' />
-              </Center>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Center textAlign='center' marginTop='20%'>
-                <Image src={Hero3} objectFit='cover' w='60%' h='60%' />
-              </Center>
-            </SwiperSlide>
+            {
+              products.AllProducts().map((product,index)=>(
+                <SwiperSlide key={index}>
+                  <Center textAlign='center' w='100%' marginTop='20%'>
+                    <Image src={product.images[0] || Hero2} objectFit='cover' w='60%' h='60%' />
+                  </Center>
+                </SwiperSlide>
+              ))
+            }
           </Swiper>
         </Box>
         </Box>

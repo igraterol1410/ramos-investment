@@ -48,6 +48,12 @@ import PapelHigienicoInstitucional from '../../assets/productos/papel_higienico_
 import BolsaASA from '../../assets/productos/bolsa_ASA.webp'
 import BolsaDesechosOrganicos from '../../assets/productos/bolsa_desechos_organicos.webp'
 
+import LimpiezaPro from '../../assets/productos_limpieza.webp'
+import PapeleriaPro from '../../assets/papeleria.webp'
+import InstitucionalPro from '../../assets/papel_institucional.webp'
+import BolsasPro from '../../assets/bolsas.webp'
+import Viveres from '../../assets/viveres_vzla.webp'
+
 const products = [
     {
         id:1, 
@@ -414,10 +420,48 @@ const products = [
         description:''
     },
 ]
+
+const ourProducts = [
+    {
+      productTitle: 'Productos de limpieza',
+      productText:'',
+      action:'cleaning_products',
+      images: LimpiezaPro
+    },
+    {
+      productTitle: 'Bolsas plásticas',
+      productText:'',
+      action:'plastic_bags',
+      images: BolsasPro
+    },
+    {
+      productTitle: 'Papel institucional',
+      productText:'',
+      action:'office_products',
+      images: InstitucionalPro
+    },
+    {
+      productTitle: 'Papelería en general',
+      productText:'',
+      action:'office_products',
+      images: PapeleriaPro
+    },
+    {
+      productTitle: 'Víveres en general',
+      productText:'',
+      action:'food',
+      images: Viveres
+    },
+  ]
 const AllProducts = () => {
     return products
 }
 
+const productsServices = () => {
+    return ourProducts
+}
+
 export default {
-    AllProducts
+    AllProducts,
+    productsServices
   }
