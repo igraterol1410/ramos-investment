@@ -19,6 +19,7 @@ const LandingProducts = () => {
 
   const goTo = (parameter) => {
     console.log(parameter)
+    window.localStorage.setItem('filterProduct', JSON.stringify({product:parameter}))
     history('/productos')
   }
   return (
@@ -34,7 +35,7 @@ const LandingProducts = () => {
         </Center>
       </Heading>
       <Grid
-      gridTemplateColumns={['1fr', '1fr','1fr 1fr 1fr','1fr 1fr 1fr']}
+      gridTemplateColumns={['1fr', '1fr','1fr 1fr','1fr 1fr']}
       gap={8}
       textAlign='center'
       padding={6}
