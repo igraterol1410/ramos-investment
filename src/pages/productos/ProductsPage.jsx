@@ -17,10 +17,9 @@ import { Formik,Form,Field } from 'formik'
 
 import products from '../../components/products/products';
 
-import ProductoImage from '../../assets/productos/prueba.svg'
-
 import { useEffect } from 'react';
 import { useState } from 'react';
+import Pagination from '../../components/products/Pagination';
 
 const ProductsPage = () => {
   const [filterProduct, setFilterProduct] = useState(products.AllProducts())
@@ -64,7 +63,6 @@ const ProductsPage = () => {
           Filtrar productos
           <Formik
             initialValues={{
-              newProduct:['food']
             }}
             validate={(values)=>{
                 handleFilter(values)
@@ -132,8 +130,9 @@ const ProductsPage = () => {
         <Center>
           <Heading as='h2'>Productos</Heading>
         </Center>
-        <Center marginTop={8}>
-          <Grid 
+        <Box marginTop={8}>
+          <Pagination paginationProducts={filterProduct} />
+          {/* <Grid 
           w={['100%', '100%', '100%', '90%']} 
           templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)','repeat(3, 1fr)']} 
           gap={6}>
@@ -159,7 +158,7 @@ const ProductsPage = () => {
                       left='0'
                       opacity='.1'
                       /> */}
-                      <Image 
+                      {/* <Image 
                       w='300px' 
                       h='300px' 
                       objectFit='contain' 
@@ -177,8 +176,8 @@ const ProductsPage = () => {
                 </GridItem>
               ))
             }
-          </Grid>
-        </Center>
+          </Grid> */}
+        </Box>
       </GridItem>
     </Grid>
   )
