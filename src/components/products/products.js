@@ -456,6 +456,15 @@ const ourProducts = [
 const AllProducts = () => {
     return products
 }
+const filterProducts = (parameter) => {
+    const reqProducts = products.filter((product)=>(product.category === parameter))
+    return reqProducts
+}
+
+const filterProductsName = (parameter) => {
+    const reqProducts = products.filter((product)=>(product.product.toLowerCase().includes(parameter.toLowerCase())))
+    return reqProducts
+}
 
 const productsServices = () => {
     return ourProducts
@@ -463,5 +472,7 @@ const productsServices = () => {
 
 export default {
     AllProducts,
-    productsServices
+    productsServices,
+    filterProducts,
+    filterProductsName
   }
