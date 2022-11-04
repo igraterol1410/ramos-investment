@@ -23,27 +23,33 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 const ProductsPage = () => {
-  const [filterProduct, setFilterProduct] = useState([])
+  const [filterProduct, setFilterProduct] = useState(products.AllProducts())
   const specificProducts = JSON.parse(window.localStorage.getItem('filterProduct'))?.product
 
   useEffect(() => {
-    const selectedProducts = products.filterProducts(specificProducts)
-    setFilterProduct(selectedProducts)
+    if(specificProducts){
+      const selectedProducts = products.filterProducts(specificProducts)
+      setFilterProduct(selectedProducts)
+      window.localStorage.removeItem('filterProduct')
+    }
   },[])
 
   const handleFilter = (keywords) => {
-    if(keywords.productName || keywords.newProduct[0]){
-      if(keywords.productName){
-        const inputProducts = products.filterProductsName(keywords.productName)
-        const checkBoxFilter = inputProducts.filter((product)=>(product.category === keywords.newProduct))
+    if(keywords.productName){
+      const inputProducts = products.filterProductsName(keywords.productName)
+      if(keywords.newProduct[0]){
+          const checkBoxFilter = inputProducts.filter((product)=>(product.category === keywords.newProduct[0]))
+          setFilterProduct(checkBoxFilter)
+        }
+        else{
+          setFilterProduct(inputProducts)
+        }
+      }
+      else if(!keywords.productName && keywords.newProduct[0]){
+        const checkBoxFilter = products.filterProducts(keywords.newProduct[0])
         setFilterProduct(checkBoxFilter)
       }
-      else if(keywords.newProduct){
-        const checkBoxFilter = products.AllProducts().filter((product)=>(product.category === keywords.newProduct[0]))
-        setFilterProduct(checkBoxFilter)
-      }
-    }
-    else{
+      else{
       setFilterProduct(products.AllProducts())
     }
   }
