@@ -96,8 +96,8 @@ const LandingHeader = () => {
           />
           <MenuList>
             {
-              menuItems && menuItems.map((item)=>(
-                <MenuItem>
+              menuItems && menuItems.map((item,index)=>(
+                <MenuItem key={index}>
                   <Link style={{height:'100%',width:'100%'}} to={item.link}>{item.title}</Link>
                 </MenuItem>
               ))
