@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Box,
   Center,
@@ -8,18 +8,41 @@ import {
   Grid, 
   GridItem,
   Button,
-  FormLabel
+  FormLabel,
+  Text
 } from '@chakra-ui/react'
 import { Formik,Form,Field } from 'formik'
+import emailjs from '@emailjs/browser';
 
 const RequestForm = () => {
     const [productName, setProductName] = useState('')
     const [productNumber, setProductNumber] = useState(0)
-    const [productList, setProductList] = useState([])
+    const [productList, setProductList] = useState([])    
+    const [disabledButton, setDisabledButton] = useState(true)    
+    const requirement = JSON.parse(window.localStorage.getItem('requirement'))
     let productsSelected = []
+
+    useEffect(()=>{
+        if(requirement){
+            setProductList(requirement)
+        }
+    },[])
 
     const handleSubmit = (values) => {
         console.log(values, productList)
+        const sendRequirement ={
+            name: values.name,
+            email:values.email,
+            phone:values.phoneNumber,
+            products:productList
+        }
+        console.log(sendRequirement)
+        emailjs.send('service_nfus5tv', 'template_a9rh8jb', sendRequirement, 'GFEbDeNcn4uuXN3Uu')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
     }
     const setProducts = () => {
         console.log(productName, productNumber)
@@ -27,6 +50,15 @@ const RequestForm = () => {
         setProductName('')
         setProductNumber(0)
     }
+
+    const handleRemoveProduct = (product) => {
+        const index = productList.indexOf(product)
+        const newArray = [...productList]
+        newArray.splice(index, 1)
+        window.localStorage.setItem('requirement', JSON.stringify(newArray))
+        setProductList(newArray)
+    }
+
   return (
     <Center marginTop={6}>
         <Box w={['90%','90%','60%' ,'60%']}>
@@ -35,6 +67,11 @@ const RequestForm = () => {
                 name:''
             }}
             validate={(values)=>{
+                if(!values.name || !values.email){
+                    setDisabledButton(true)
+                }else{
+                    setDisabledButton(false)
+                }
                 console.log(values)
             }}
             onSubmit={handleSubmit}
@@ -82,9 +119,29 @@ const RequestForm = () => {
                         <Divider marginBottom={4} marginTop={4} />
 
                         <Box w='100%'>
+                            <Center>
+                                <Text fontSize='2xl'>Lista de productos</Text>
+                            </Center>
+                            <Grid
+                            gridTemplateColumns='2fr 2fr 1fr'
+                            w='100%' 
+                            py={2} 
+                            px={4}
+                            bg='#19a4b0'
+                            color='white'
+                            marginBottom={2}
+                            borderRadius={8}>
+                                <GridItem>Producto</GridItem>
+                                <GridItem>Cantidad</GridItem>
+                                <GridItem>Acción</GridItem>
+                            </Grid>
                             {
                                 productList && productList.map((product)=>(
-                                    <Box 
+                                    <Grid 
+                                    gridTemplateColumns='2fr 2fr 1fr'
+                                    gap={4}
+                                    alignContent='center'
+                                    alignItems='center'
                                     w='100%' 
                                     py={2} 
                                     px={4}
@@ -92,8 +149,37 @@ const RequestForm = () => {
                                     color='white'
                                     marginBottom={2}
                                     borderRadius={8}>
-                                        {product.product} - {product.number}</Box>
+                                        <GridItem>
+                                            {product.product}
+                                        </GridItem>
+                                        <GridItem>
+                                            {product.number}
+                                        </GridItem>
+                                        <GridItem
+                                        _hover={{
+                                            cursor:'pointer'
+                                        }}
+                                        onClick={() => handleRemoveProduct(product)}>
+                                            Eliminar
+                                        </GridItem>
+                                    </Grid>
                                 ))
+                            }
+                            {
+                                productList.length === 0 &&
+                                <Grid 
+                                    gridTemplateColumns='1fr'
+                                    w='100%' 
+                                    py={2} 
+                                    px={4}
+                                    bg='#19a4b0'
+                                    color='white'
+                                    marginBottom={2}
+                                    borderRadius={8}>
+                                        <GridItem>
+                                           Añade productos
+                                        </GridItem>
+                                    </Grid>
                             }
                         </Box>
 
@@ -133,7 +219,8 @@ const RequestForm = () => {
                                 _hover={{
                                     bg:'#17a6bf'
                                 }} 
-                                onClick={setProducts}>Añadir</Button> 
+                                onClick={setProducts}
+                                disabled={productNumber <= 0 || !productName}>Añadir</Button> 
                             </GridItem>
                         </Grid>
 
@@ -147,6 +234,7 @@ const RequestForm = () => {
                             bg:'#17a6bf'
                         }}
                         type='submit'
+                        disabled={disabledButton}
                         >Solicitar cotización</Button>                        
                     </Form>
                 )}
