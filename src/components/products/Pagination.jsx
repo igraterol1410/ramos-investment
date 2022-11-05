@@ -36,7 +36,7 @@ const Pagination = ({ paginationProducts }) => {
         border-radius:8px;
         background:white;
         color:#189ab7;
-        padding: 5px;
+        padding: 5px 15px;
         `;
     }
     

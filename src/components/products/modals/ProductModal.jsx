@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Modal,
     ModalOverlay,
@@ -13,22 +13,43 @@ import {
     Text,
     useDisclosure,
     Image,
+    InputGroup,
+    Input,
+    InputRightElement,
+    FormControl,
+    FormLabel,
+    Box,
+    GridItem,
+    Grid,
   } from '@chakra-ui/react'
 
   import ProductImage from '../../../assets/logo.webp'
+import { Link } from 'react-router-dom'
 
 const ProductModal = ({product, modal, setModal}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const [ number, setNumber ] = useState(0)
+    const [productList, setProductList] = useState([])
+    const requirement = JSON.parse(window.localStorage.getItem('requirement'))
 
     useEffect(()=>{
         if(modal){
             onOpen()
-        }        
+        }    
+        if(requirement){
+            setProductList(requirement)   
+        }
     },[modal])
 
     const closeModal = () => {
+        setNumber(0)
         setModal()
         onClose()
+    }
+
+    const addToCart = (product, number) => {
+        setProductList([...productList, {product:product, number:number}])
+        window.localStorage.setItem('requirement', JSON.stringify([...productList, {product:product, number:number}]))
     }
   return (
     <Modal
@@ -65,7 +86,7 @@ const ProductModal = ({product, modal, setModal}) => {
             </Center>
           </ModalHeader>
           <ModalBody>
-            <Center>
+            <Center marginBottom={4}>
                 {
                     product &&
                     <Heading as='h2' size='md'>
@@ -73,16 +94,33 @@ const ProductModal = ({product, modal, setModal}) => {
                     </Heading>
                 }
             </Center>
+            <Grid gridTemplateColumns='2fr 1fr'>
+                <GridItem w='100%'>
+                    <Button 
+                    w='80%' 
+                    disabled={number <= 0} 
+                    bg='brand.blue' 
+                    color='white' 
+                    _hover={{
+                        color:'brand.aquamarinePrimary'
+                    }}
+                    onClick={()=>addToCart(product.product, number)}
+                    >Añadir a la cotización</Button>    
+                </GridItem>
+                <GridItem>
+                    <FormControl mb={8}>
+                        <Center>
+                            <InputGroup maxW={500}>
+                            <Input type='number' value={number} onChange={(e) => setNumber(e.target.value)} placeholder='Cantidad' />
+                            </InputGroup>
+                        </Center>
+                    </FormControl>
+                </GridItem>
+            </Grid>
             <Center>
-              <Text fontSize='sm'>
-                hola
-              </Text>
-            </Center>
-            <Center marginBottom={4}>
-                <Button>Cotizar</Button>
-            </Center>
-            <Center>
-                <Button>Terminar cotización</Button>
+                <Link to='/cotizar'>
+                    <Button disabled={!requirement}>Terminar cotización</Button>
+                </Link>
             </Center>
           </ModalBody>
           <ModalFooter>

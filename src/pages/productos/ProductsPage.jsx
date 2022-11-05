@@ -36,7 +36,7 @@ const ProductsPage = () => {
   const handleFilter = (keywords) => {
     if(keywords.productName){
       const inputProducts = products.filterProductsName(keywords.productName)
-      if(keywords.newProduct[0]){
+      if(keywords.newProduct){
           const checkBoxFilter = inputProducts.filter((product)=>(product.category === keywords.newProduct[0]))
           setFilterProduct(checkBoxFilter)
         }
@@ -44,7 +44,7 @@ const ProductsPage = () => {
           setFilterProduct(inputProducts)
         }
       }
-      else if(!keywords.productName && keywords.newProduct[0]){
+      else if(!keywords.productName && keywords.newProduct){
         const checkBoxFilter = products.filterProducts(keywords.newProduct[0])
         setFilterProduct(checkBoxFilter)
       }
@@ -63,6 +63,7 @@ const ProductsPage = () => {
           Filtrar productos
           <Formik
             initialValues={{
+              productName:''
             }}
             validate={(values)=>{
                 handleFilter(values)
