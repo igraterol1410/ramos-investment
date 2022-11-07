@@ -8,9 +8,13 @@ import {
   Center,
   Grid,
   GridItem,
-  Button
+  Button,
+  Text
 } from '@chakra-ui/react'
+import { SearchIcon } from '@chakra-ui/icons'
 import { transform } from 'framer-motion'
+
+import ProductBg from '../../assets/product-bg5.png'
 
 import products from '../../components/products/products';
 
@@ -46,6 +50,8 @@ const LandingProducts = () => {
                   // border='1px solid blue'
                   borderRadius={12}
                   bgGradient='linear(to-t, white, bran.blue)'
+                  bgImage={ProductBg}
+                  bgSize='100%'
                   // bg='white'
                   key={index}
                   _hover={{
@@ -53,32 +59,31 @@ const LandingProducts = () => {
                   }}
                   onClick={()=>goTo(product.action)}
                   >
-                  <Grid gridTemplateRows='3fr 1fr 1fr' gap={4} padding={4}>
+                  <Grid gridTemplateColumns={['1fr', '1fr','1fr 1fr','1fr 1fr']} gap={4} padding={4}>
                     <GridItem>
                       <Box
                       minHeight='150px'
                       w='100%'
                       h='100%'
-                      bg='white'
-                      borderRadius={12}
                       position='relative'
                       >
                         <Image src={product.images} alt={product.images}
+                        borderRadius={12}
                         w='100%'
                         h='100%'
                         position='absolute'
                         objectFit='cover'
-                        opacity={['1','1','.6','.6']}
-                        _hover={{
-                          opacity:'1'
-                        }}
                         />
                       </Box>
                     </GridItem>
-                    <GridItem>{product.productTitle}</GridItem>
                     <GridItem>
-                      <Button bg='brand.blue' borderRadius={50} w='100%'>Ver {product.productTitle}</Button>
+                      <Text>
+                      {product.productTitle}
+                      </Text>
+                      <Button bg='brand.aquamarinePrimary' borderRadius={50} w='100%'><SearchIcon marginRight={4} /> Ver {product.productTitle}</Button>
                     </GridItem>
+                    {/* <GridItem>
+                    </GridItem> */}
                   </Grid>
                 </GridItem>
               ))

@@ -9,44 +9,77 @@ import {
   GridItem,
   Button,
   FormLabel,
-  Text
+  Text,
+  useToast,
+  Spinner
 } from '@chakra-ui/react'
 import { Formik,Form,Field } from 'formik'
 import emailjs from '@emailjs/browser';
 
 const RequestForm = () => {
+    const toast = useToast()
     const [productName, setProductName] = useState('')
     const [productNumber, setProductNumber] = useState(0)
     const [productList, setProductList] = useState([])    
     const [disabledButton, setDisabledButton] = useState(true)    
+    const [refresh, setRefresh] = useState(true)    
+    const [loading, setLoading] = useState(false)    
     const requirement = JSON.parse(window.localStorage.getItem('requirement'))
-    let productsSelected = []
 
     useEffect(()=>{
         if(requirement){
             setProductList(requirement)
+        }else{
+            setProductList([])
         }
-    },[])
+    },[refresh])
+
+    const arrayToHtml = (array) => {
+        return `<table>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+        </tr>
+        ${array.map((item,index)=>(
+            `<tr key=${index}>
+                <td>${item.product}</td>
+                <td style="text-align:center;">${item.number}</td>
+            </tr>`
+        ))}
+        </table>`
+    }
 
     const handleSubmit = (values) => {
-        console.log(values, productList)
+        setLoading(true)
+        setDisabledButton(true)
         const sendRequirement ={
             name: values.name,
             email:values.email,
             phone:values.phoneNumber,
-            products:productList
+            my_html:arrayToHtml(productList)
         }
-        console.log(sendRequirement)
         emailjs.send('service_nfus5tv', 'template_a9rh8jb', sendRequirement, 'GFEbDeNcn4uuXN3Uu')
       .then((result) => {
-          console.log(result.text);
-      }, (error) => {
+        toast({
+            title: 'Cotización enviada',
+            description: `Tu cotización será enviada al correo ${values.email}`,
+            status: 'success',
+            duration: 9000,
+            position:'top'
+          })
+          window.localStorage.removeItem('requirement')
+          setRefresh(!refresh)
+          setLoading(false)
+          setDisabledButton(false)
+        }, (error) => {
+            setLoading(false)
+            setDisabledButton(false)
           console.log(error.text);
       });
     }
     const setProducts = () => {
-        console.log(productName, productNumber)
         setProductList([...productList, {product:productName, number:productNumber}])
+        window.localStorage.setItem('requirement', JSON.stringify([...productList, {product:productName, number:productNumber}]))
         setProductName('')
         setProductNumber(0)
     }
@@ -61,10 +94,16 @@ const RequestForm = () => {
 
   return (
     <Center marginTop={6}>
+        {
+            loading &&
+            <Spinner/>
+        }
         <Box w={['90%','90%','60%' ,'60%']}>
             <Formik
             initialValues={{
-                name:''
+                name:'',
+                email:'',
+                phoneNumber:''
             }}
             validate={(values)=>{
                 if(!values.name || !values.email){
@@ -72,11 +111,10 @@ const RequestForm = () => {
                 }else{
                     setDisabledButton(false)
                 }
-                console.log(values)
             }}
             onSubmit={handleSubmit}
             >
-                {({values})=>(
+                {({values,resetForm})=>(
                     <Form>
                         <Grid templateColumns={['repeat(1, 1fr)','repeat(1, 1fr)','repeat(2, 1fr)','repeat(2, 1fr)']} gap={2}>
                             <GridItem>
@@ -156,11 +194,17 @@ const RequestForm = () => {
                                             {product.number}
                                         </GridItem>
                                         <GridItem
+                                        border='1px solid white'
+                                        borderRadius={8}
                                         _hover={{
-                                            cursor:'pointer'
+                                            cursor:'pointer',
+                                            bg:'white',
+                                            color:'brand.aquamarinePrimary'
                                         }}
                                         onClick={() => handleRemoveProduct(product)}>
-                                            Eliminar
+                                            <Center>
+                                                Eliminar
+                                            </Center>
                                         </GridItem>
                                     </Grid>
                                 ))

@@ -24,6 +24,7 @@ import {
   } from '@chakra-ui/react'
 
   import ProductImage from '../../../assets/logo.webp'
+  import ProductBg from '../../../assets/product-bg4.png'
 import { Link } from 'react-router-dom'
 
 const ProductModal = ({product, modal, setModal}) => {
@@ -72,7 +73,11 @@ const ProductModal = ({product, modal, setModal}) => {
         >
           <ModalHeader>
           <ModalCloseButton />
-          <Center>
+          <br/>
+          <Center
+          bgImage={ProductBg}
+          backgroundSize='100%'
+          borderRadius={14}>
             {
                 product &&
                 <Image
@@ -98,6 +103,7 @@ const ProductModal = ({product, modal, setModal}) => {
                 <GridItem w='100%'>
                     <Button 
                     w='80%' 
+                    borderRadius={50}
                     disabled={number <= 0} 
                     bg='brand.blue' 
                     color='white' 
@@ -105,6 +111,7 @@ const ProductModal = ({product, modal, setModal}) => {
                         color:'brand.aquamarinePrimary'
                     }}
                     onClick={()=>addToCart(product.product, number)}
+                    fontSize={['14px','14px','1rem','1rem']}
                     >Añadir a la cotización</Button>    
                 </GridItem>
                 <GridItem>
@@ -119,7 +126,14 @@ const ProductModal = ({product, modal, setModal}) => {
             </Grid>
             <Center>
                 <Link to='/cotizar'>
-                    <Button disabled={!requirement}>Terminar cotización</Button>
+                    <Button 
+                    bg='brand.blue'
+                    color='white'
+                    _hover={{
+                        color:'brand.aquamarinePrimary'
+                    }}
+                    borderRadius={50}
+                    disabled={!requirement}>Terminar cotización</Button>
                 </Link>
             </Center>
           </ModalBody>

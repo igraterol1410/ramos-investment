@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Link,
 } from "react-router-dom";
@@ -21,6 +21,13 @@ import { HamburgerIcon, AddIcon, ExternalLinkIcon,RepeatIcon } from '@chakra-ui/
 import Logo from '../../assets/logo-3.webp'
 
 const LandingHeader = () => {
+  const [headerScrolled, setHeaderScrolled] = useState(false)
+  useEffect(() => {
+    const handleScroll = () => {
+      setHeaderScrolled(window.scrollY !== 0)
+    }
+    window.addEventListener('scroll', handleScroll)
+  }, [])
 
   const menuItems = [
     {
@@ -47,7 +54,8 @@ const LandingHeader = () => {
     py='1.5rem' 
     px='2rem'
     bg='white'
-    zIndex={10}>
+    zIndex={10}
+    boxShadow={headerScrolled ? '-4px 7px 18px -5px rgba(0,0,0,0.53)' : ''}>
 
       <Link to='/'>
         <Image 
