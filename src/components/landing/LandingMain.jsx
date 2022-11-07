@@ -52,7 +52,7 @@ const LandingMain = () => {
     gap={['2','2','6','6']}
     padding={4}
     marginTop='98px' 
-    height='90vh' 
+    minHeight='90vh' 
     w='100%'
     position='relative'
     bgGradient='linear(to-t, brand.aquamarinePrimary, white)'
