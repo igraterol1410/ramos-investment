@@ -36,7 +36,7 @@ const ProductsPage = () => {
   const handleFilter = (keywords) => {
     if(keywords.productName){
       const inputProducts = products.filterProductsName(keywords.productName)
-      if(keywords.newProduct){
+      if(keywords.newProduct && keywords.newProduct.length > 0){
           const checkBoxFilter = inputProducts.filter((product)=>(product.category === keywords.newProduct[0]))
           setFilterProduct(checkBoxFilter)
         }
@@ -44,7 +44,7 @@ const ProductsPage = () => {
           setFilterProduct(inputProducts)
         }
       }
-      else if(!keywords.productName && keywords.newProduct){
+      else if(!keywords.productName && keywords.newProduct && keywords.newProduct.length > 0){
         const checkBoxFilter = products.filterProducts(keywords.newProduct[0])
         setFilterProduct(checkBoxFilter)
       }
@@ -56,8 +56,10 @@ const ProductsPage = () => {
   return (
     <Grid gridTemplateColumns={['1fr', '1fr', '20% 1fr', '20% 1fr']}     
     marginTop='98px' 
+    minHeight='89vh'
     padding={6}    
-    bgGradient='linear(to-b, white, brand.aquamarinePrimary, brand.blue)'>
+    bgGradient='linear(to-b, white, brand.aquamarinePrimary)'
+    >
       <GridItem>
         <Box>
           Filtrar productos
@@ -133,51 +135,6 @@ const ProductsPage = () => {
         </Center>
         <Box marginTop={8}>
           <Pagination paginationProducts={filterProduct} />
-          {/* <Grid 
-          w={['100%', '100%', '100%', '90%']} 
-          templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)','repeat(3, 1fr)']} 
-          gap={6}>
-            {
-              filterProduct && filterProduct.map((product)=>(
-                <GridItem key={product.id} >
-                  <Box 
-                  maxW='sm' 
-                  borderWidth='1px' 
-                  borderRadius='lg' 
-                  overflow='hidden'
-                  py={4}
-                  position='relative'
-                  >
-                    <Center>
-                      {/* <Image 
-                      w='100%' 
-                      h='100%' 
-                      objectFit='cover' 
-                      src={product.images[0] || ProductoImage} 
-                      position='absolute'
-                      top='0'
-                      left='0'
-                      opacity='.1'
-                      /> */}
-                      {/* <Image 
-                      w='300px' 
-                      h='300px' 
-                      objectFit='contain' 
-                      src={product.images[0] || ProductoImage}
-                      zIndex='2'
-                      />
-                    </Center>
-                    <Center>
-                      {product.product}
-                    </Center>
-                    <Center>
-                      <Button bg='brand.blue' color='white' w='80%'>Ver</Button>
-                    </Center>
-                  </Box>
-                </GridItem>
-              ))
-            }
-          </Grid> */}
         </Box>
       </GridItem>
     </Grid>

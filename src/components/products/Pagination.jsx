@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import { Box, Button, Center, Grid, GridItem, Image } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom'
 import ReactPaginate from 'react-paginate';
 
 
 
 import ProductoImage from '../../assets/logo.webp'
+import ProductoBg from '../../assets/product-bg5.png'
 import ProductModal from './modals/ProductModal';
 
 const Pagination = ({ paginationProducts }) => {
+    const history = useNavigate()
     const [currentItems, setCurrentItems] = useState(null);
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
@@ -81,6 +84,8 @@ const Pagination = ({ paginationProducts }) => {
                   >
                     <Center
                     bg='gray.100'
+                    bgImage={ProductoBg}
+                    backgroundSize='100%'
                     borderRadius={12}>
                       <Image 
                       w='300px' 
@@ -91,19 +96,66 @@ const Pagination = ({ paginationProducts }) => {
                       />
                     </Center>
                     <Center 
-                    fontWeight='bold'
+                    // fontWeight='bold'
                     color='brand.aquamarinePrimary'
                     padding='1rem'
+                    textAlign='center'
                     >
                       {product.product}
                     </Center>
                     <Center>
-                      <Button bg='brand.blue' color='white' w='80%' onClick={()=>handleModal(product)}>Ver</Button>
+                      <Button 
+                      borderRadius={50} 
+                      border='3px solid #189ab7'
+                      bg='brand.blue' 
+                      color='white' 
+                      w='80%' 
+                      _hover={{
+                        color:'brand.aquamarinePrimary'
+                      }}
+                      onClick={()=>handleModal(product)}>Ver</Button>
                     </Center>
                   </Box>
                 </GridItem>
               ))
             }
+                <GridItem>
+                  <Box 
+                  maxW='sm'                      
+                  boxShadow='-4px 7px 18px -5px rgba(0,0,0,0.53)'
+                  h='100%'
+                  borderWidth='1px' 
+                  bg='white'
+                  borderRadius='lg'
+                  overflow='hidden'
+                  py={4}
+                  px={2}
+                  position='relative'
+                  >
+                    <Center
+                    bg='gray.100'
+                    borderRadius={12}>
+                      <Image 
+                      w='300px' 
+                      h='300px' 
+                      objectFit='contain' 
+                      src={ProductoImage}
+                      zIndex='2'
+                      />
+                    </Center>
+                    <Center 
+                    fontWeight='bold'
+                    color='brand.aquamarinePrimary'
+                    padding='1rem'
+                    textAlign='center'
+                    >
+                      ¿No encuentras el producto que buscas?
+                    </Center>
+                    <Center>
+                      <Button bg='brand.blue' color='white' w='80%' onClick={()=>history('/cotizar')}>Solicitar</Button>
+                    </Center>
+                  </Box>
+                </GridItem>
         </Grid>
         <ReactPaginate
           breakLabel="..."

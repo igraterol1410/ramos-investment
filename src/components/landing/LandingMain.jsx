@@ -17,7 +17,7 @@ import {
   import Waves from '../../assets/waves2.svg'
   import Hero1 from '../../assets/productos/tobo_mopeador.webp'
   import Hero2 from '../../assets/hero-image.svg'
-  import Hero3 from '../../assets/productos/bolsa_desechos_organicos.webp'
+  import Bg from '../../assets/product-bg.png'
   import Animation from '../../assets/animation.svg'
 
 import HeroImage from '../../assets/hero-image.svg'
@@ -56,6 +56,8 @@ const LandingMain = () => {
     w='100%'
     position='relative'
     bgGradient='linear(to-t, brand.aquamarinePrimary, white)'
+    // bgImage={Bg}
+    // backgroundSize='100%'
     >
       <GridItem 
       h='100%' 
@@ -133,8 +135,8 @@ const LandingMain = () => {
       justifyContent='center'
       >
         <Box
-        w={['200px','200px','500px','500px']}
-        h={['200px','200px','500px','500px']}
+        w={['350px','350px','500px','500px']}
+        h={['350px','350px','500px','500px']}
         borderRadius='50%'
         backgroundImage={Animation}
         >
