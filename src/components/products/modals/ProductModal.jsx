@@ -66,7 +66,9 @@ const ProductModal = ({product, modal, setModal}) => {
     }
 
     const finishAdd = (product, number) => {
-        addToCart(product, number)
+        if(number > 0){
+            addToCart(product, number)            
+        }
         history('/cotizar')
     }
   return (
@@ -150,7 +152,7 @@ const ProductModal = ({product, modal, setModal}) => {
                         color:'brand.aquamarinePrimary'
                     }}
                     borderRadius={50}
-                    disabled={!requirement}
+                    disabled={requirement <= 0}
                     onClick={()=>finishAdd(product.product, number)}>Terminar cotización</Button>
                 {/* </Link> */}
             </Center>
