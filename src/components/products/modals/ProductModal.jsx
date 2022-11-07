@@ -21,13 +21,17 @@ import {
     Box,
     GridItem,
     Grid,
+    useToast
   } from '@chakra-ui/react'
 
   import ProductImage from '../../../assets/logo.webp'
   import ProductBg from '../../../assets/product-bg4.png'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { BsCartPlus } from "react-icons/bs";
 
 const ProductModal = ({product, modal, setModal}) => {
+    const toast = useToast()
+    const history = useNavigate()
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [ number, setNumber ] = useState(0)
     const [productList, setProductList] = useState([])
@@ -51,6 +55,19 @@ const ProductModal = ({product, modal, setModal}) => {
     const addToCart = (product, number) => {
         setProductList([...productList, {product:product, number:number}])
         window.localStorage.setItem('requirement', JSON.stringify([...productList, {product:product, number:number}]))
+        toast({
+            title: 'Producto añadido exitosamente',
+            description: `${product} - ${number}`,
+            status: 'success',
+            duration: 9000,
+            position:'top'
+          })
+          setNumber(0)
+    }
+
+    const finishAdd = (product, number) => {
+        addToCart(product, number)
+        history('/cotizar')
     }
   return (
     <Modal
@@ -112,7 +129,7 @@ const ProductModal = ({product, modal, setModal}) => {
                     }}
                     onClick={()=>addToCart(product.product, number)}
                     fontSize={['14px','14px','1rem','1rem']}
-                    >Añadir a la cotización</Button>    
+                    ><BsCartPlus style={{marginRight:'1rem',fontSize:'1.1rem'}} />Añadir</Button>    
                 </GridItem>
                 <GridItem>
                     <FormControl mb={8}>
@@ -125,7 +142,7 @@ const ProductModal = ({product, modal, setModal}) => {
                 </GridItem>
             </Grid>
             <Center>
-                <Link to='/cotizar'>
+                {/* <Link to='/cotizar'> */}
                     <Button 
                     bg='brand.blue'
                     color='white'
@@ -133,8 +150,9 @@ const ProductModal = ({product, modal, setModal}) => {
                         color:'brand.aquamarinePrimary'
                     }}
                     borderRadius={50}
-                    disabled={!requirement}>Terminar cotización</Button>
-                </Link>
+                    disabled={!requirement}
+                    onClick={()=>finishAdd(product.product, number)}>Terminar cotización</Button>
+                {/* </Link> */}
             </Center>
           </ModalBody>
           <ModalFooter>
