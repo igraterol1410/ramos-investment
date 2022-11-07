@@ -133,7 +133,7 @@ const RequestForm = () => {
                                 <Field 
                                 as={Input}
                                 focusBorderColor='#19a4b0'
-                                type='text'
+                                type='email'
                                 id='email'
                                 name='email'
                                 placeholder='Correo'
@@ -149,7 +149,7 @@ const RequestForm = () => {
                                 type='text'
                                 id='phoneNumber'
                                 name='phoneNumber'
-                                placeholder='prueba'
+                                placeholder='Ingresa un teléfono'
                                 />                        
                             </GridItem>
                         </Grid>
