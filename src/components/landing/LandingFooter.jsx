@@ -41,14 +41,14 @@ const LandingFooter = () => {
               fontSize={14}
               px={4}
               >
-              Somos proveedores de distribuidores de productos de limpieza, bolsas plasticas, papelería en general y más...
+              Somos distribuidores de productos de limpieza, bolsas plasticas, papelería en general y más...
               </Center>
               <Center 
               marginTop={4}>
                   <Flex 
                   gap={8}>
                       <Link 
-                      href='https://chakra-ui.com' 
+                      href='https://www.facebook.com/profile.php?id=100084848200460' 
                       isExternal 
                       w='100%' 
                       h='100%'>
@@ -61,7 +61,7 @@ const LandingFooter = () => {
                         </Center>
                       </Link>
                       <Link 
-                      href='https://chakra-ui.com' 
+                      href='https://www.instagram.com/inversiones_ramos_2030/' 
                       isExternal 
                       w='100%' 
                       h='100%'>

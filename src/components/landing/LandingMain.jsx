@@ -17,8 +17,8 @@ import {
   import Waves from '../../assets/waves2.svg'
   import Hero1 from '../../assets/productos/tobo_mopeador.webp'
   import Hero2 from '../../assets/hero-image.svg'
-  import Bg from '../../assets/product-bg.png'
-  import Animation from '../../assets/animation.svg'
+  import Bg from '../../assets/main-bg2.png'
+  import Animation from '../../assets/animation3.svg'
 
 import HeroImage from '../../assets/hero-image.svg'
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -57,7 +57,7 @@ const LandingMain = () => {
     position='relative'
     bgGradient='linear(to-t, brand.aquamarinePrimary, white)'
     // bgImage={Bg}
-    // backgroundSize='100%'
+    // backgroundSize='cover'
     >
       <GridItem 
       h='100%' 
@@ -94,13 +94,13 @@ const LandingMain = () => {
               disableOnInteraction: false
             }}>
               <SwiperSlide>
-                <Heading w='100%' color='brand.blue'>Somos distribuidores de productos de limpieza, bolsas plásticas, víveres y más...</Heading>
+                <Heading w='100%' color='brand.yellow'>Somos distribuidores de productos de limpieza, bolsas plásticas, víveres y más...</Heading>
               </SwiperSlide>
               <SwiperSlide>
-                <Heading color='brand.blue'>Todo en artículos de limpieza</Heading>
+                <Heading color='brand.yellow'>Todo en artículos de limpieza</Heading>
               </SwiperSlide>
               <SwiperSlide>
-                <Heading color='brand.blue'>Linea institucional de papel</Heading>
+                <Heading color='brand.yellow'>Linea institucional de papel</Heading>
               </SwiperSlide>
             </Swiper>
             </Center>
@@ -135,8 +135,8 @@ const LandingMain = () => {
       justifyContent='center'
       >
         <Box
-        w={['350px','350px','500px','500px']}
-        h={['350px','350px','500px','500px']}
+        w={['350px','350px','560px','560px']}
+        h={['350px','350px','560px','560px']}
         borderRadius='50%'
         backgroundImage={Animation}
         >
@@ -152,7 +152,7 @@ const LandingMain = () => {
               products.AllProducts().map((product,index)=>(
                 <SwiperSlide key={index}>
                   <Center textAlign='center' w='100%' marginTop='20%'>
-                    <Image src={product.images[0] || Hero2} objectFit='cover' w='60%' h='60%' />
+                    <Image src={product.images[0] || Hero2} objectFit='contain' w='60%' maxHeight='320px' />
                   </Center>
                 </SwiperSlide>
               ))
