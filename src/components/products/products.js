@@ -121,70 +121,70 @@ const products = [
     {
         id:10, 
         product:'Cepillo de mano tipo plancha', 
-        category:'cleaning_accessories', 
+        category:'cleaning_products', 
         images:[CepilloTipoPlancha], 
         description:''
     },
     {
         id:11, 
         product:'Mopa para limpiar', 
-        category:'cleaning_accessories', 
+        category:'cleaning_products', 
         images:[Mopa], 
         description:''
     },
     {
         id:12, 
         product:'Cepillo para barrer', 
-        category:'cleaning_accessories', 
+        category:'cleaning_products', 
         images:[CepilloParaBarrer], 
         description:''
     },
     {
         id:13, 
         product:'Contenedor de basura 120L', 
-        category:'cleaning_accessories', 
+        category:'cleaning_products', 
         images:[Contenedor120], 
         description:''
     },
     // {
     //     id:14, 
     //     product:'Contenedor de basura 120L', 
-    //     category:'cleaning_accessories', 
+    //     category:'cleaning_products', 
     //     images:[], 
     //     description:''
     // },
     {
         id:15, 
         product:'Escobillón', 
-        category:'cleaning_accessories', 
+        category:'cleaning_products', 
         images:[Escobillon], 
         description:''
     },
     {
         id:16, 
         product:'Guantes para limpieza', 
-        category:'cleaning_accessories', 
+        category:'cleaning_products', 
         images:[GuantesParaLimpieza], 
         description:''
     },
     {
         id:17, 
         product:'Chupon de goma', 
-        category:'cleaning_accessories', 
+        category:'cleaning_products', 
         images:[ChuponDeGoma], 
         description:''
     },
     {
         id:18, 
         product:'Haragan', 
-        category:'cleaning_accessories', 
+        category:'cleaning_products', 
         images:[Haragan], 
         description:''
     },
     {
         id:19, 
         product:'Palas plásticas', 
-        category:'cleaning_accessories', 
+        category:'cleaning_products', 
         images:[PalasPlasticas], 
         description:''
     },
@@ -296,7 +296,7 @@ const products = [
     {
         id:35, 
         product:'Alcohol medicinal', 
-        category:'various_products', 
+        category:'cleaning_products', 
         images:[AlcoholMedicinal], 
         description:''
     },
@@ -310,70 +310,70 @@ const products = [
     {
         id:37, 
         product:'Envoplast', 
-        category:'various_products', 
+        category:'institutional_products', 
         images:[Envoplast], 
         description:''
     },
     {
         id:38, 
         product:'Papel higiénico institucional', 
-        category:'various_products', 
+        category:'institutional_products', 
         images:[PapelHigienicoInstitucional], 
         description:''
     },
     {
         id:39, 
         product:'Toallas industriales', 
-        category:'various_products', 
+        category:'institutional_products', 
         images:[ToallasEnEspiral], 
         description:''
     },
     {
         id:40, 
         product:'Vasos cónicos Konie', 
-        category:'various_products', 
+        category:'institutional_products', 
         images:[VasosConicos], 
         description:''
     },
     {
         id:41, 
         product:'Bandejas de anime', 
-        category:'various_products', 
+        category:'institutional_products', 
         images:[BandejasDeAnime], 
         description:''
     },
     {
         id:42, 
         product:'Vasos plásticos', 
-        category:'various_products', 
+        category:'institutional_products', 
         images:[VasosPlasticos], 
         description:''
     },
     {
         id:43, 
-        product:'Tobo mapeador', 
-        category:'various_products', 
+        product:'Tobo mopeador', 
+        category:'cleaning_products', 
         images:[ToboMopeador], 
         description:''
     },
     {
         id:44, 
         product:'Toallas en rollo', 
-        category:'various_products', 
+        category:'institutional_products', 
         images:[ToallasEnRollo], 
         description:''
     },
     {
         id:45, 
         product:'Toallas en espiral', 
-        category:'various_products', 
+        category:'institutional_products', 
         images:[ToallasEnEspiral], 
         description:''
     },
     {
         id:46, 
         product:'Servilletas Z', 
-        category:'various_products', 
+        category:'institutional_products', 
         images:[ServilletasZ], 
         description:''
     },
@@ -401,21 +401,21 @@ const products = [
     {
         id:50, 
         product:'Pitillos', 
-        category:'various_products', 
+        category:'institutional_products', 
         images:[Pitillos], 
         description:''
     },
     {
         id:51, 
         product:'Coleto 3 rayas', 
-        category:'cleaning_accessories', 
+        category:'cleaning_products', 
         images:[ColetoDeRayas], 
         description:''
     },
     {
         id:52, 
         product:'Papel higiénico', 
-        category:'various_products', 
+        category:'institutional_products', 
         images:[PapelHigienico], 
         description:''
     },
@@ -437,7 +437,7 @@ const ourProducts = [
     {
       productTitle: 'Papel institucional',
       productText:'',
-      action:'office_products',
+      action:'institutional_products',
       images: InstitucionalPro
     },
     {

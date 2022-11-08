@@ -12,7 +12,6 @@ import {
   Text
 } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
-import { transform } from 'framer-motion'
 
 import ProductBg from '../../assets/product-bg5.png'
 
@@ -22,7 +21,6 @@ const LandingProducts = () => {
   const history = useNavigate()
 
   const goTo = (parameter) => {
-    console.log(parameter)
     window.localStorage.setItem('filterProduct', JSON.stringify({product:parameter}))
     history('/productos')
   }
