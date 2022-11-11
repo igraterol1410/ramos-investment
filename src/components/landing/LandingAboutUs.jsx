@@ -10,7 +10,7 @@ import {
   Text
 } from '@chakra-ui/react'
 
-import ProductsBg from '../../assets/hero-image.svg'
+import ProductsBg from '../../assets/about-us.webp'
 import Animation from '../../assets/animation2.svg'
 
 const LandingAboutUs = () => {
@@ -42,9 +42,9 @@ const LandingAboutUs = () => {
         display='grid'
         alignItems='center'
         >
-          <Box fontSize={18}>
-            <Text marginBottom={4}>
-              Somos una empresa con sello venezolano, dedicada a la comercialización de productos de limpieza de alta calidad, bolsas plásticas, papel institucional, papelería, víveres en general y más.
+          <Box fontSize={18} textAlign='left'>
+            <Text marginBottom={2}>
+            Somos Inversiones Ramos 2030, C.A comprometidos en brindarle la mejor Atención Personalizada para proveer sus artículos de oficina, papelería, consumibles, suministros de cafetería, productos de limpieza y mucho más (Todo lo que necesite).
             </Text>
             <Text>
               Con mas de 30 años de experiencia nos destacamos por facilitar el proceso de compras de productos de gran calidad.
@@ -61,13 +61,21 @@ const LandingAboutUs = () => {
           <Box
           w='100%'
           h='100%'
-          backgroundImage={Animation}
+          // backgroundImage={Animation}
+          // bgRepeat='no-repeat'
+          display='grid'
+          gridTemplateColumns='1fr'
+          alignContent='center'
+          justifyContent='center'
           >
-            <Image 
-            src={ProductsBg} 
-            alt='Logo de inversiones ramos' 
-            w='100%'
-            />
+            <Center>
+              <Image 
+              src={ProductsBg} 
+              alt='Logo de inversiones ramos' 
+              w='50%'
+              borderRadius='48px'
+              />
+            </Center>
           </Box>
         </GridItem>
     </Grid>

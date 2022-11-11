@@ -94,13 +94,14 @@ const LandingMain = () => {
               disableOnInteraction: false
             }}>
               <SwiperSlide>
-                <Heading w='100%' color='brand.yellow'>Somos distribuidores de productos de limpieza, bolsas plásticas, víveres y más...</Heading>
+                <Heading w='100%' color='brand.yellow'
+                textShadow='7px 4px 8px #000000'>Somos distribuidores de productos de limpieza, bolsas plásticas, víveres y más...</Heading>
               </SwiperSlide>
               <SwiperSlide>
-                <Heading color='brand.yellow'>Todo en artículos de limpieza</Heading>
+                <Heading color='brand.yellow' textShadow='7px 4px 8px #000000'>Todo en artículos de limpieza</Heading>
               </SwiperSlide>
               <SwiperSlide>
-                <Heading color='brand.yellow'>Linea institucional de papel</Heading>
+                <Heading color='brand.yellow' textShadow='7px 4px 8px #000000'>Linea institucional de papel</Heading>
               </SwiperSlide>
             </Swiper>
             </Center>
