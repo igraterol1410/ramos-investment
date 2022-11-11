@@ -6,7 +6,7 @@ import ReactPaginate from 'react-paginate';
 
 
 import ProductoImage from '../../assets/logo.webp'
-import ProductoBg from '../../assets/product-bg5.png'
+import ProductoBg from '../../assets/ramos-bg.webp'
 import ProductModal from './modals/ProductModal';
 
 const Pagination = ({ paginationProducts }) => {

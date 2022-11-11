@@ -25,7 +25,7 @@ import {
   } from '@chakra-ui/react'
 
   import ProductImage from '../../../assets/logo.webp'
-  import ProductBg from '../../../assets/product-bg4.png'
+  import ProductBg from '../../../assets/ramos-bg.webp'
 import { useNavigate } from 'react-router-dom'
 import { BsCartPlus } from "react-icons/bs";
 

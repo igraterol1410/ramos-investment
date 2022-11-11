@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
 
-import ProductBg from '../../assets/product-bg5.png'
+import ProductBg from '../../assets/ramos-bg.webp'
 
 import products from '../../components/products/products';
 
@@ -75,7 +75,7 @@ const LandingProducts = () => {
                       </Box>
                     </GridItem>
                     <GridItem>
-                      <Text>
+                      <Text color='brand.aquamarinePrimary' fontWeight='bold'>
                       {product.productTitle}
                       </Text>
                       <Button bg='brand.aquamarinePrimary' borderRadius={50} w='100%'><SearchIcon marginRight={4} /> Ver {product.productTitle}</Button>
